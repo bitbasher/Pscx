@@ -31,6 +31,31 @@ To force the installation use this command:
 Install-Module Pscx -AllowClobber -Scope CurrentUser
 ```
 
+There may be further issues to overcome.
+Powershell security policy may block the 'Pscx' module from loading:
+
+```powershell
+New-SymLink D:\ parts_library
+New-SymLink : The 'New-SymLink' command was found in the module 'Pscx', but the module could not be loaded. For more
+information, run 'Import-Module Pscx'.
+```
+
+Running the suggested command may provide this feedback:
+
+```powershell
+PS C:\> Import-Module Pscx
+Import-Module : File C:\WindowsPowerShell\Modules\Pscx\3.3.2\Pscx.psm1 cannot be loaded
+because running scripts is disabled on this system. For more information, see 
+[about_Execution_Policies at](https:/go.microsoft.com/fwlink/?LinkID=135170).
+```
+
+Using the information on that page this command is suggested:
+
+```powershell
+PS C:> Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy AllSigned
+```
+
+Which permits the command Import-Module Pscx to run and thus make the Pscx commands available.
 
 If you already have installed Pscx from the PowerShell Gallery, you can update Pscx with the command:
 
@@ -562,7 +587,7 @@ Creates filesystem symbolic links. Requires Microsoft Windows Vista or later.
 
 #### `Write-Tar`
 
-Create Tape Archive (TAR) format files from pipeline or parameter input.
+Create a Tape ARchive (TAR) format file from a pipeline or parameter input.
 
 ### TerminalSession
 
