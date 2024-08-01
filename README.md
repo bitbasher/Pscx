@@ -15,7 +15,22 @@ Pscx is hosted on the PowerShell Gallery.  You can install Pscx with the followi
 Install-Module Pscx -Scope CurrentUser
 ```
 
-You may be prompted to trust the PSGallery.  Respond with a 'y' (for yes) to proceed with the install.
+You may be prompted to trust the PSGallery.  Respond with a 'y' (for Yes) or 'A' (for All) to proceed with the install.
+
+This extension replaces a number of PowerShell commands that are installed by other extensions.
+If this is the case the command emits this warning:
+
+```powershell
+The following commands are already available on this system:
+'gcb, Expand-Archive, Format-Hex, Get-Hash, help, prompt, Get-Clipboard, Get-Help, Set-Clipboard'. This module 'Pscx'
+may override the existing commands. If you still want to install this module 'Pscx', use -AllowClobber parameter.
+```
+To force the installation use this command:
+
+```powershell
+Install-Module Pscx -AllowClobber -Scope CurrentUser
+```
+
 
 If you already have installed Pscx from the PowerShell Gallery, you can update Pscx with the command:
 
